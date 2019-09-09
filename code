@@ -1,0 +1,19 @@
+function reverseInParentheses(inputString) {
+    //recursion ends the function reversing returns a 
+    //string that doesn't have opening and closing brackets
+    if(inputString.includes('(')){
+        return reverseInParentheses(reversing(inputString));
+    }
+    
+    return inputString;
+}
+function reversing(turn){
+    //regex that sorts out values inside brackets
+    var regex = /\(([^()]*)\)/i;
+    //returns string within a bracket
+    var parts = regex.exec(turn)[1];
+    //reverses the string
+    parts = parts.split("").reverse().join("");
+    //replaces the value in the brackets with the replaced value
+    return turn.replace(regex, parts);
+}
